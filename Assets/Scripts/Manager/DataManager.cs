@@ -4,10 +4,15 @@ using TMPro;
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class DataManager : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField]
     private TextMeshProUGUI _userNameText;
+    [SerializeField]
+    private TextMeshProUGUI _currentTimeText;
+
+    [Header("Animation")]
     [SerializeField]
     private Animator _playerAnimator;
     [SerializeField]
@@ -20,5 +25,10 @@ public class UIManager : MonoBehaviour
             _userNameText.text = GameManager._instance._userName.ToString();
             _playerAnimator.runtimeAnimatorController = _animControllers[(int)GameManager._instance.CharacterType];
         }
+    }
+
+    private void Update()
+    {
+        _currentTimeText.text = Utils.GetCurrentTime();
     }
 }
