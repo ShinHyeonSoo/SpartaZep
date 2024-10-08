@@ -3,22 +3,36 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Animations;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager _instance;
+
+    [Header("User")]
+    [SerializeField]
+    private GameObject _player;
+    [SerializeField]
+    private GameObject _users;
+    private List<GameObject> _usersList;
 
     [Header("UI")]
     [SerializeField]
     private TextMeshProUGUI _userNameText;
     [SerializeField]
     private TextMeshProUGUI _currentTimeText;
+    [SerializeField]
+    private GameObject _userList;
 
     [Header("Animation")]
     [SerializeField]
     private Animator _playerAnimator;
     [SerializeField]
     private RuntimeAnimatorController[] _animControllers;
+
+    [Header("ObjectPool")]
+    [SerializeField]
+    private ObjectPool _pool;
 
     private void Awake()
     {
@@ -34,7 +48,15 @@ public class DataManager : MonoBehaviour
         {
             _userNameText.text = GameManager._instance._userName.ToString();
             _playerAnimator.runtimeAnimatorController = _animControllers[(int)GameManager._instance.CharacterType];
+            _player.GetComponent<CharacterStatHandler>().SetUserName(_userNameText.text);
         }
+
+        //foreach (Transform user in _users.transform)
+        //{
+        //    _usersList.Add(user.gameObject);
+        //}
+
+        EnqueueUserList("UserName");
     }
 
     private void Update()
@@ -45,10 +67,16 @@ public class DataManager : MonoBehaviour
     public void ChangeUserName()
     {
         _userNameText.text = GameManager._instance._userName.ToString();
+        _player.GetComponent<CharacterStatHandler>().SetUserName(_userNameText.text);
     }
 
     public void ChangeCharacterAnim()
     {
         _playerAnimator.runtimeAnimatorController = _animControllers[(int)GameManager._instance.CharacterType];
+    }
+
+    public void EnqueueUserList(string key, int num = 1)
+    {
+        _pool.CustomSpawnFromPool(key, _userList);
     }
 }

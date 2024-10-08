@@ -7,6 +7,7 @@ public class ZepMovement : MonoBehaviour
 {
     private ZepController _controller;
     private Rigidbody2D _movementRigidbody;
+    private CharacterStatHandler _characterStatHandler;
 
     private Vector2 _movementDirection = Vector2.zero;
 
@@ -14,6 +15,7 @@ public class ZepMovement : MonoBehaviour
     {
         _controller = GetComponent<ZepController>();
         _movementRigidbody = GetComponent<Rigidbody2D>();
+        _characterStatHandler = GetComponent<CharacterStatHandler>();
     }
 
     private void Start()
@@ -33,7 +35,7 @@ public class ZepMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 dir)
     {
-        dir = dir * 15;
+        dir = dir * _characterStatHandler.GetBaseStats().infoSO.speed;
         _movementRigidbody.velocity = dir;
     }
 }
