@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Detect
-  - DetectX
-  - DetectY
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,7 +13,7 @@ TagManager:
   - UI
   - Player
   - NPC
-  - DetectCollider
+  - 
   - 
   - 
   - 

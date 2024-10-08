@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public StringBuilder _userName = new StringBuilder();
 
+    public Utils.CharacterType CharacterType { get; set; }
+
     private void Start()
     {
         if (_instance == null)
