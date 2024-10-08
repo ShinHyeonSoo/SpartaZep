@@ -33,7 +33,7 @@ public class ZepMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 dir)
     {
-        dir = dir * 5;
+        dir = dir * 15;
         _movementRigidbody.velocity = dir;
     }
 }
