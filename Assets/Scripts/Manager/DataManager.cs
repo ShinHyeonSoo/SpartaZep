@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+    public static DataManager _instance;
+
     [Header("UI")]
     [SerializeField]
     private TextMeshProUGUI _userNameText;
@@ -17,6 +19,14 @@ public class DataManager : MonoBehaviour
     private Animator _playerAnimator;
     [SerializeField]
     private RuntimeAnimatorController[] _animControllers;
+
+    private void Awake()
+    {
+        if(_instance == null)
+            _instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -30,5 +40,10 @@ public class DataManager : MonoBehaviour
     private void Update()
     {
         _currentTimeText.text = Utils.GetCurrentTime();
+    }
+
+    public void ChangeUserName()
+    {
+        _userNameText.text = GameManager._instance._userName.ToString();
     }
 }
