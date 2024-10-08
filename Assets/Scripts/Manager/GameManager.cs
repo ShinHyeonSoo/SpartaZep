@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public StringBuilder _userName = new StringBuilder();
 
-    public Utils.CharacterType CharacterType { get; set; }
+    public Utils.CharacterType CharacterType { get; private set; }
 
     private void Start()
     {
@@ -19,5 +19,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void ChangeCharacter(int num)
+    {
+        CharacterType = (Utils.CharacterType)num;
     }
 }

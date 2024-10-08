@@ -7,7 +7,8 @@ public class ButtonChange : MonoBehaviour
 {
     public void OnButtonChangeCharacter(int num)
     {
-
+        GameManager._instance.ChangeCharacter(num);
+        DataManager._instance.ChangeCharacterAnim();
     }
 
     public void OnButtonChangeName(TMP_InputField inputField)

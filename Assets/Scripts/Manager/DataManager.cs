@@ -46,4 +46,9 @@ public class DataManager : MonoBehaviour
     {
         _userNameText.text = GameManager._instance._userName.ToString();
     }
+
+    public void ChangeCharacterAnim()
+    {
+        _playerAnimator.runtimeAnimatorController = _animControllers[(int)GameManager._instance.CharacterType];
+    }
 }

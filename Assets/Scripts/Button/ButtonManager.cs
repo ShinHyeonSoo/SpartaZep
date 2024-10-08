@@ -42,7 +42,7 @@ public class ButtonManager : MonoBehaviour
 
     public void OnButtonChangeImage(int num)
     {
-        GameManager._instance.CharacterType = (Utils.CharacterType)num;
+        GameManager._instance.ChangeCharacter(num);
 
         int count = 0;
         foreach(GameObject go in _characterList)
