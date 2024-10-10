@@ -7,5 +7,6 @@ public class InfoSO : ScriptableObject
 {
     [Header("Info")]
     public string userName;
+    public string script;
     public float speed;
 }

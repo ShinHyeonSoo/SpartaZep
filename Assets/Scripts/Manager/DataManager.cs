@@ -83,10 +83,4 @@ public class DataManager : MonoBehaviour
             obj.GetComponent<TextMeshProUGUI>().text = _usersList[i].GetComponent<CharacterStatHandler>().GetBaseStats().userName;
         }
     }
-
-    //public void RemoveUserList(string key)
-    //{
-    //    _pool.CustomCollectToPool(key);
-    //    //_usersList.RemoveAt(0);
-    //}
 }

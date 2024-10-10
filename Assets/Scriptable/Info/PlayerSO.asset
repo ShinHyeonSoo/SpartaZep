@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
   userName: 
-  speed: 15
+  script: 
+  speed: 10

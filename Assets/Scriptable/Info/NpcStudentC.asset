@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d91a436681047f44b86d9c6a5f2dae7, type: 3}
-  m_Name: NpcStudent
+  m_Name: NpcStudentC
   m_EditorClassIdentifier: 
-  userName: "\uD559\uC0DDA"
+  userName: "\uD559\uC0DDC"
+  script: "TIL \uC791\uC131\uC744 \uC78A\uC9C0\uB9C8\uC138\uC694!"
   speed: 5
