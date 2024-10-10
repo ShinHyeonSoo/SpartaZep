@@ -14,7 +14,7 @@ public class DataManager : MonoBehaviour
     private GameObject _player;
     [SerializeField]
     private GameObject _users;
-    private List<GameObject> _usersList;
+    private List<GameObject> _usersList = new List<GameObject>();
 
     [Header("UI")]
     [SerializeField]
@@ -51,12 +51,12 @@ public class DataManager : MonoBehaviour
             _player.GetComponent<CharacterStatHandler>().SetUserName(_userNameText.text);
         }
 
-        //foreach (Transform user in _users.transform)
-        //{
-        //    _usersList.Add(user.gameObject);
-        //}
+        foreach (Transform user in _users.transform)
+        {
+            _usersList.Add(user.gameObject);
+        }
 
-        EnqueueUserList("UserName");
+        AddUserList("UserName", _usersList.Count);
     }
 
     private void Update()
@@ -75,8 +75,18 @@ public class DataManager : MonoBehaviour
         _playerAnimator.runtimeAnimatorController = _animControllers[(int)GameManager._instance.CharacterType];
     }
 
-    public void EnqueueUserList(string key, int num = 1)
+    public void AddUserList(string key, int num = 1)
     {
-        _pool.CustomSpawnFromPool(key, _userList);
+        for (int i = 0; i < num; ++i)
+        {
+            GameObject obj = _pool.CustomSpawnFromPool(key, _userList);
+            obj.GetComponent<TextMeshProUGUI>().text = _usersList[i].GetComponent<CharacterStatHandler>().GetBaseStats().userName;
+        }
     }
+
+    //public void RemoveUserList(string key)
+    //{
+    //    _pool.CustomCollectToPool(key);
+    //    //_usersList.RemoveAt(0);
+    //}
 }

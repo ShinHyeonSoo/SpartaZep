@@ -9,7 +9,7 @@ public class CharacterStatHandler : MonoBehaviour
 
     private void Awake()
     {
-        if(string.IsNullOrEmpty(_baseStats.infoSO.userName))
+        if(!string.IsNullOrEmpty(_baseStats.infoSO.userName))
             _baseStats.userName = _baseStats.infoSO.userName;
     }
 

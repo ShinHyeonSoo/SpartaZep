@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,5 +64,14 @@ public class ObjectPool : MonoBehaviour
         obj.SetActive(true);
         obj.transform.SetParent(parent.transform);
         return obj;
+    }
+
+    public void CustomCollectToPool(string tag)
+    {
+        // 제일 마지막 객체에 접근
+        GameObject[] objArray = PoolDictionary[tag].ToArray();
+        GameObject obj = objArray[objArray.Length - 1];
+        obj.SetActive(false);
+        obj.transform.SetParent(this.GetComponent<Transform>().transform);
     }
 }
