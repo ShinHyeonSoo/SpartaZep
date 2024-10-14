@@ -26,6 +26,11 @@ public class ButtonManager : MonoBehaviour
             Debug.LogError("이름을 입력하세요.");
             return;
         }
+        else if (2 > userName.Length || userName.Length > 10)
+        {
+            Debug.LogError("2 ~ 10 글자수 제한입니다.");
+            return;
+        }
 
         GameManager._instance._userName.Append(userName);
 
